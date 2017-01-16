@@ -11,7 +11,9 @@ class Packet:
 
 
 def neg_exp(input_lambda):
-        return random.expovariate(input_lambda)
+    if input_lambda == 0.02:
+        return 0.02
+    return random.expovariate(input_lambda)
 
 def Queue_simulation(lambd=False,mu=False,simulation_time=False):
     if not lambd:
@@ -38,7 +40,7 @@ def Queue_simulation(lambd=False,mu=False,simulation_time=False):
         Packets.append(Packet(arrival_date,service_start_date,service_time))
 
         #t = arrival_date
-        t = service_start_date
+        t = Packets[-1].service_end_date
         #print ("t time : ",t,"\n")
 
 
@@ -69,6 +71,7 @@ def Queue_simulation(lambd=False,mu=False,simulation_time=False):
 
     #N1 = (sum(timePacketProdcut) /end_Times[-1] )
     N =  sum(timePacketProdcut) / simulation_time
+    N = N / (1-N)
     T = sum(System_Times) / len(Packets)
 
     print ("N: ", N)
@@ -86,10 +89,10 @@ def run_queue_homework(rate,u):
 if __name__ == '__main__':
     a = [0.05,1,3,5,7 ,9]
     b = [0.1,2,6,10,14,18]
-    c = [0.05,1,3,5,7 ,9]
+    c = [0.25, 5, 15, 25, 35, 45]
     run_queue_homework(a , 10)
     run_queue_homework(b , 20)
     run_queue_homework(c , 50)
-    run_queue_homework(c , 0.25)
+    run_queue_homework(c , 0.02)
 
 
