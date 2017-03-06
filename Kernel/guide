@@ -1,0 +1,34 @@
+/*
+	This is for ubuntu 16 , kernel 4.10
+
+*/
+
+****Download Kernel Path****
+
+https://www.kernel.org/
+
+****Download Kernel : 4.10 ****
+https://www.kernel.org/pub/linux/kernel/v4.x/
+
+
+****ubuntu grub****
+1. gedit /etc/default/grub
+2. And add a # in front of GRUB_HIDDEN_TIMEOUT=0
+3. update-grub
+
+****Steps****
+
+0. sudo -i (root mode)
+
+1. apt-get install ncurses-dev
+2. extract kernel file from kernel website
+3. Go to kernel folder
+4. #make menuconfig -> save config --save -> load config --save (Make sure that default configure is ".config")
+5. #make clean
+6. #make
+7. make modules 
+8. make modules_install 
+9. make install
+10. reboot
+11. Select Advanced option on grub list.
+12. Check kernel was installed.
